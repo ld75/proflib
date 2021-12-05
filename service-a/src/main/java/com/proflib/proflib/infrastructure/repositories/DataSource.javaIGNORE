@@ -1,0 +1,25 @@
+package com.proflib.proflib.infrastructure.repositories;
+
+public class DataSource {
+
+    @ApplicationScoped
+    public class DataSource {
+        Logger logger =  LoggerFactory.getLogger(DataSource.class);
+        @PersistenceContext
+        EntityManager em;
+
+        /*@Resource(name="comptesds")
+        DataSource myDB;*/
+        @Produces
+        public EntityManager getEm() {
+            return em;
+        }
+        @PostConstruct
+        public void debut() {
+            logger.debug("INITIALISE "+em);
+        }
+
+    }
+
+
+}
