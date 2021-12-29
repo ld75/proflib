@@ -1,0 +1,9 @@
+-name:chaispas
+hosts: all
+#become: yes // pour executer tout le playbook en root
+#remote_user: nomDuUserAUtiliserEnRemote // a eviter car trop rigide/si besoin dynamyser sur remote AFAIRE voir comment faire? peut etre avec variables ?
+tasks:
+  -name:clean proflibcomptes
+    command: "mvn ../proflib-comptes/mvn clean"
+  - name: buid proflibcomptes
+    command: "mvn ../proflib-comptes/mvn package"
