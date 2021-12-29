@@ -3,6 +3,8 @@
     <persistence-unit name="proflibpersist" transaction-type="JTA">
         <jta-data-source>jdbc/local-db</jta-data-source>
         <properties>
+            <property name="javax.persistence.schema-generation.create-source" value="script-then-metadata"/>
+            <property name="javax.persistence.schema-generation.create-script-source" value="META-INF/comptesCreateDB.sql"/>
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
         </properties>
     </persistence-unit>
