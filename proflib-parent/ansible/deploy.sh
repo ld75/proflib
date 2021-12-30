@@ -1,0 +1,1 @@
+ansible-playbook -i env/local/00_inventory.yml -C playbook.yml

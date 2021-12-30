@@ -1,3 +1,27 @@
 all:
   hosts:
     localhost:
+      children:
+        parent1:
+          wsproflibcomptes:
+            hosts:
+              ansible_web_1:
+              ansible_web_2:
+          children: //sous ca c'est les groupes enfants de parent1
+            webserverMEMENOM:
+              hosts:
+                server1MEMENOM: |
+                server2MEMENOM: |_pour ces trois lignes je peux aussi mettre sur une seule comme ça server[1:3]: // ca itere
+                server3: |
+                  var3:"tata" // cette variable là est spécifique à server3 seulement. Eviter mettre variables dans inventaire mais dans LINKvarsoaut
+              vars: // les variables ci dessous s'appliquent au groupe webserver donc à server1MEMENOM,2 et 3. Eviter de faire mettre les variables dans inventair mais dans LINKvarsoaute
+                var1:"toto"
+                var2:"LINKvrbl"
+            databasesMEMENOM:
+              hosts:
+                server4:
+            nginx:
+              children:
+                sousenfant2-1
+                hosts:
+                  server5:
