@@ -21,7 +21,7 @@ EOF
 modprobe overlay
 modprobe br_netfilter
 
-echo "[TASK 4] Add Kernel settings"
+echo "[TASK 4] Add Kernel settings ACAPITALISER"
 cat >>/etc/sysctl.d/kubernetes.conf<<EOF
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables  = 1
@@ -44,16 +44,16 @@ apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main" >/dev/
 echo "[TASK 7] Install Kubernetes components (kubeadm, kubelet and kubectl)"
 apt install -qq -y kubeadm=1.22.0-00 kubelet=1.22.0-00 kubectl=1.22.0-00 >/dev/null 2>&1
 
-echo "[TASK 8] Enable ssh password authentication"
+echo "[TASK 8] Enable ssh password authentication  AETUDIER"
 sed -i 's/^PasswordAuthentication .*/PasswordAuthentication yes/' /etc/ssh/sshd_config
 echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
 systemctl reload sshd
 
-echo "[TASK 9] Set root password"
+echo "[TASK 9] Set root password AETUDIER"
 echo -e "kubeadmin\nkubeadmin" | passwd root >/dev/null 2>&1
 echo "export TERM=xterm" >> /etc/bash.bashrc
 
-echo "[TASK 10] Update /etc/hosts file"
+echo "[TASK 10] Update /etc/hosts file ACAPITALISER"
 cat >>/etc/hosts<<EOF
 172.16.16.100   kmaster.example.com     kmaster
 172.16.16.101   kworker1.example.com    kworker1
