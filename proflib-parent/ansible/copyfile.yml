@@ -1,0 +1,25 @@
+- hosts: all
+  gather_facts: no
+  tasks:
+#    - name: debug
+#      ansible.builtin.debug:
+#        msg: "privileges sont ok"
+
+    - name: creer un fichier
+      ansible.builtin.file:
+        path: /var/www/aeffacer.txt
+        state: touch
+        owner: root
+        group: root
+        mode: '0664'
+#
+#    - name: verifier si existe
+#      ansible.builtin.file:
+#        path: /var/www/aeffacer.txt
+#        state: file
+#
+#    - name: ajouter des lignes dans un fichier et creer ce fichier si il n'existe pas
+#      lineinfile:
+#        path: /var/test.txt
+#        line: chaine de characteres a ecrire
+#        create: yes

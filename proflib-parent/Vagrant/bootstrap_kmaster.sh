@@ -25,5 +25,5 @@ kubectl taint nodes --all node-role.kubernetes.io/master-
 echo "Confirm that you now have a node in your cluster with the following command. It should return your cluster description"
 kubectl get nodes -o wide
 
-echo "[TASK 4] Generate and save cluster join command to /joincluster.sh"
+echo "[TASK 4] Generate and save cluster join command to /joincluster.sh: COMMANDE EXECUTEE sur tous les clusters(workers) pour les joindre tous"
 kubeadm token create --print-join-command > /joincluster.sh 2>/dev/null

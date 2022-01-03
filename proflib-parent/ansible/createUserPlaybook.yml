@@ -1,0 +1,40 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: create groupe
+      group:
+        name: "kube"
+        state: present
+
+    - name: create un user et le mettre mettre dans un groupe
+      ansible.builtin.user:
+        name: kube
+        state: present
+        password: "{{ 'password' | password_hash('sha512') }}"
+    - name: allow 'kube' to use sudo without needing a password
+      lineinfile:
+        dest: /etc/sudoers
+        line: 'kube ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
+
+#    - name: shell etcpassword
+#      command: cat passwd chdir=/etc
+#      register: resultat
+#
+#    - name: debug
+#      debug:
+#        msg: "{{resultat}}"
+
+    - name: set up authorized keys for the kube user
+      ansible.posix.authorized_key:
+        user: kube
+        state: present
+        exclusive: true
+        key: "{{ lookup('file', '/home/laurent/.ssh/id_rsa.pub') }}"
+
+#  echo "[TASK 10] Update /etc/hosts file ACAPITALISER"
+#  cat >>/etc/hosts<<EOF
+#  172.16.16.100   kmaster.example.com     kmaster
+#  172.16.16.101   kworker1.example.com    kworker1
+#  172.16.16.102   kworker2.example.com    kworker2
+#  EOF
