@@ -17,6 +17,7 @@
         <module>proflib-comptes</module>
         <module>service-b</module>
         <module>proflib-sharedkernels</module>
+        <module>proflib-front</module>
     </modules>
 
 </project>
