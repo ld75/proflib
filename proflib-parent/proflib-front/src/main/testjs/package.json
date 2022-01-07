@@ -1,0 +1,23 @@
+{
+  "name": "js",
+  "lockfileVersion": 2,
+  "requires": true,
+  "packages": {},
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.7",
+    "@ungap/custom-elements": "github:ungap/custom-elements",
+    "babel-jest": "^27.4.6",
+    "jest": "^27.4.7",
+    "jest-environment-jsdom": "^27.4.6"
+  },
+  "jest": {
+    "setupFiles": [
+      "@ungap/custom-elements"
+    ],
+    "testEnvironment": "jsdom"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}
