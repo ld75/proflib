@@ -2,43 +2,46 @@ export class CarteDeVisite extends HTMLElement{
 constructor(){
         super();
         this.shadow = this.attachShadow({mode:'closed'})
-    var monTemplate =document.createElement("template");
-    monTemplate.innerHTML=`
+    }
+    connectedCallback()
+    {
+        var monTemplate =document.createElement("template");
+        monTemplate.innerHTML=`
             <style>
              :host>div{
+                padding:20px;
                 display:grid;
                 grid-template-columns: 1fr 1fr;
-                grid-template-rows: auto 1fr 3fr;
+                grid-template-rows:2fr 1fr 1fr;
                 grid-column-gap: 10px;
-                grid-row-gap: 15px;
+                grid-row-gap: 5px;
                 grid-template-areas:
-                  "fonction fonction"
+                  "fonction photo"
                   "nom prenom"
-                  "photo photo" 
                   "etoiles etoiles";
                   }
              :host >div >div{
                 justify-content: center;
                 border: 1px solid;
              }
-          
-    }
-            </style>
+                </style>
            <div>
-            <div style="grid-area:nom">nom</div>
-            <div style="grid-area:prenom">prenomaaaaaaaaa</div>
-            <div style="grid-area:fonction">type<slot name='type'></slot></div>
-            <div style="grid-area:photo">photo</div>
-            <div style="grid-area:etoiles">etoiles</div>
+            <div style="grid-area:nom">${this.nom}</div>
+            <div style="grid-area:prenom">${this.prenom}</div>
+            <div style="grid-area:fonction"><slot name='type'></slot></div>
+            <div style="grid-area:photo"><img alt="${this.nom} ${this.prenom}" src="/img/"${this.imgpath}"></img></div>
+            <div style="grid-area:etoiles"><proflib-etoiles score=${this.score}></proflib-etoiles></div>
             </div>`
         var cloneDuTemplate = monTemplate.content.cloneNode(true);
-        console.log(this)
-        console.log(this.shadow)
         this.shadow.appendChild(cloneDuTemplate);
     }
-    connectedCallback()
+    static get observedAttributes()
     {
-        console.log(this.shadow)
+        return ['nom','prenom','imgpath','score'];
+    }
+    attributeChangedCallback(nameattr,oldval,newval)
+    {
+            this[nameattr]=newval;
     }
 }
 window.customElements.define('proflib-cartedevisite', CarteDeVisite);
