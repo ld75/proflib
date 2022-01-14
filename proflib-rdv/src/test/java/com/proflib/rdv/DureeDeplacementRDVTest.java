@@ -48,5 +48,18 @@ public class DureeDeplacementRDVTest {
         Assertions.assertEquals(24,minutes);
     }
 
+    @Test
+    public void distance0EtTrain_calculduree_duree()
+    {
+        int minutes = dureeDeplacementCalculateur.calculeDuree(0, new Train());
+        Assertions.assertEquals(0,minutes);
+
+    }
+
+    @Test
+    public void distance3EtTrain_calcul_duree30kmH()
+    {
+
+    }
 
 }

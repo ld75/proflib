@@ -10,4 +10,8 @@ public class DureeDeplacementCalculateur {
         if (distanceKm==0) return 0;
         return distanceKm*60/vitesseKM_H;
     }
+    public int calculeDuree(int distance, Train train) {
+
+        return distance;
+    }
 }
