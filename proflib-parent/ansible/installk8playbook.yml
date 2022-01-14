@@ -64,6 +64,9 @@
          sudo swapoff -a
     #        sudo sed -i '/swap/d' /etc/fstab
 
+    - name: install gnupg
+      apt :
+        name: gnupg
 
     - name: TASK 6 Add apt repo for kubernetes install and configure dependencies
       shell: |

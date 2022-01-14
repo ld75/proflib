@@ -1,0 +1,25 @@
+all:
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+    
+  children:
+    parent1:
+      hosts:
+        kmaster:
+          ansible_port: 22
+          ansible_host: 172.17.0.2
+#          ansible_user: vagrant
+#          ansible_ssh_private_key_file: /home/laurent/Documents/ProfChinoisLib2/proflib-parent/Vagrant/.vagrant/machines/kmaster/virtualbox/private_key
+          ansible_ssh_extra_args: "-o IdentitiesOnly=yes"
+        kworker1:
+          ansible_port: 2200
+          ansible_host: 127.0.0.1
+          ansible_user: vagrant
+          ansible_ssh_private_key_file: /home/laurent/Documents/ProfChinoisLib2/proflib-parent/Vagrant/.vagrant/machines/kworker1/virtualbox/private_key
+          ansible_ssh_extra_args: "-o IdentitiesOnly=yes"
+        kworker2:
+          ansible_port: 2201
+          ansible_host: 127.0.0.1
+          ansible_user: vagrant
+          ansible_ssh_private_key_file: /home/laurent/Documents/ProfChinoisLib2/proflib-parent/Vagrant/.vagrant/machines/kworker2/virtualbox/private_key
+          ansible_ssh_extra_args: "-o IdentitiesOnly=yes"

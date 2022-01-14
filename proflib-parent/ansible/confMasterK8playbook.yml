@@ -1,14 +1,14 @@
-- hosts: masters
+- hosts: "172.17.0.2"
   become: yes
   tasks:
-    - name: [TASK 2] Initialize Kubernetes Cluster initialize the cluster
-      shell: kubeadm init --apiserver-advertise-address=172.16.16.100 --pod-network-cidr=192.168.0.0/16
+    - name: TASK 2 Initialize Kubernetes Cluster initialize the cluster
+      shell: kubeadm init --apiserver-advertise-address=172.17.0.2 --pod-network-cidr=192.168.0.0/16
       #kubeadm init --pod-network-cidr=10.244.0.0/16
       args:
         chdir: $HOME
         creates: cluster_initialized.txt
 
-    - name: [TASK 3] Deploy Calico network create .kube directory. INSTALLATION DE CALICO (voirhttps://projectcalico.docs.tigera.io/getting-started/kubernetes/) Execute the following commands to configure kubectl (also returned by kubeadm init).
+    - name: TASK 3 Deploy Calico network create .kube directory. INSTALLATION DE CALICO (voirhttps://projectcalico.docs.tigera.io/getting-started/kubernetes/) Execute the following commands to configure kubectl (also returned by kubeadm init).
       become: yes
       become_user: kube
       file:
@@ -39,14 +39,15 @@
       shell: kubectl get nodes -o wide
 
 
-    - name: [TASK 4] Generate and save cluster join command to /joincluster.sh COMMANDE EXECUTEE sur tous les clusters(workers) pour les joindre tous Get the token for joining the worker nodes
+    - name: TASK 4 Generate and save cluster join command to /joincluster.sh COMMANDE EXECUTEE sur tous les clusters(workers) pour les joindre tous Get the token for joining the worker nodes
       become: yes
       become_user: kube
       shell: kubeadm token create  --print-join-command
       register: kubernetes_join_command
 
-    - debug:
-      msg: "{{ kubernetes_join_command.stdout }}"
+    - name: debbugage
+      debug:
+        msg: "{{ kubernetes_join_command.stdout }}"
 
     - name: Copy join command to local file.
       become: yes
