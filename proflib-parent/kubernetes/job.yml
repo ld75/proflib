@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hello2
+spec:
+  template:
+    metadata:
+      labels:
+        app: proflib
+    spec:
+      containers:
+        - name: hello2
+          image: proflib-web:1
+          ports:
+          - containerPort: 8080
+      restartPolicy: OnFailure
