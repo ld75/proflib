@@ -1,65 +1,37 @@
 package com.proflib.rdv;
 
-import com.proflib.rdv.datasource.DatasourceMockConfig;
-import com.proflib.rdv.vehicule.Train;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
+
 @SpringBootTest
-@ContextConfiguration(classes={DatasourceMockConfig.class,DureeDeplacementCalculateur.class})
+@ContextConfiguration(classes={DureeDeplacementRdv.class})
 public class DureeDeplacementRDVTest {
-
     @Autowired
-    DureeDeplacementCalculateur dureeDeplacementCalculateur;
+    DureeDeplacementRdv dureeDeplacementRdv;
+    @Test
+    public void distanceNegativeVitesseNegative_calculDureeDeplacement_ExceptionIllegal()
+    {
+        Assertions.assertThrows(IllegalArgumentException.class,()->{dureeDeplacementRdv.calculDureeTrajet(-5,-5);});
+    }
+    @Test
+    public void distanceZeroVitesseZero_calculDureeDeplacement_ExceptionInfini()
+    {
+        Assertions.assertThrows(InfiniteDurationExcption.class,()->{dureeDeplacementRdv.calculDureeTrajet(0,0);});
+    }
+    @Test
+    public void distance1Vitesse1_calculDureeDeplacement_60minutes() throws InfiniteDurationExcption {
+        int minutes = dureeDeplacementRdv.calculDureeTrajet(1, 1);
+           Assertions.assertEquals(60,minutes);
+    };
 
     @Test
-    public void distanceEtVitesseNulles_DistanceEtVitesseToMinutes()
-    {
-        int minutes = dureeDeplacementCalculateur.distanceEtVitesseToMinutes(0,0);
-        Assertions.assertEquals(0,minutes);
-    }
-    @Test
-    public void distanceEtVitesseNonNullesEgales1_DistanceEtVitesseToMinutes()
-    {
-        int minutes = dureeDeplacementCalculateur.distanceEtVitesseToMinutes(1,1);
-        Assertions.assertEquals(60,minutes);
-    }
-
-    @Test
-    public void distanceEtVitesseNonNullesEgales2_DistanceEtVitesseToMinutes()
-    {
-        int minutes = dureeDeplacementCalculateur.distanceEtVitesseToMinutes(2,2);
-        Assertions.assertEquals(60,minutes);
-    }
-    @Test
-    public void distanceEtVitesseNonNullesDifferents_DistanceEtVitesseToMinutes()
-    {
-        int minutes = dureeDeplacementCalculateur.distanceEtVitesseToMinutes(1,2);
+    public void distance1Vitesse2_calculDureeDeplacement_30minutes() throws InfiniteDurationExcption {
+        int minutes = dureeDeplacementRdv.calculDureeTrajet(1, 2);
         Assertions.assertEquals(30,minutes);
-    }
-
-    @Test
-    public void distanceEtVitesseNonNullesRealistes_DistanceEtVitesseToMinutes()
-    {
-        int minutes = dureeDeplacementCalculateur.distanceEtVitesseToMinutes(20,50);
-        Assertions.assertEquals(24,minutes);
-    }
-
-    @Test
-    public void distance0EtTrain_calculduree_duree()
-    {
-        int minutes = dureeDeplacementCalculateur.calculeDuree(0, new Train());
-        Assertions.assertEquals(0,minutes);
+    };
 
     }
-
-    @Test
-    public void distance3EtTrain_calcul_duree30kmH()
-    {
-
-    }
-
-}
