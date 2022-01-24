@@ -1,3 +1,4 @@
+import {Etoiles} from './Etoiles.js';
 export class CarteDeVisite extends HTMLElement{
 constructor(){
         super();
@@ -12,24 +13,30 @@ constructor(){
                 padding:20px;
                 display:grid;
                 grid-template-columns: 1fr 1fr;
-                grid-template-rows:2fr 1fr 1fr;
+                grid-template-rows:3fr 0.5r 1fr;
                 grid-column-gap: 10px;
                 grid-row-gap: 5px;
                 grid-template-areas:
                   "fonction photo"
                   "nom prenom"
                   "etoiles etoiles";
+                 background-color:#e4e2fa;
+
                   }
              :host >div >div{
                 justify-content: center;
-                border: 1px solid;
+                text-align: center;
+             }
+             img{
+                width:100px;
+                border-radius:50%;
              }
                 </style>
            <div>
             <div style="grid-area:nom">${this.nom}</div>
             <div style="grid-area:prenom">${this.prenom}</div>
             <div style="grid-area:fonction"><slot name='type'></slot></div>
-            <div style="grid-area:photo"><img alt="${this.nom} ${this.prenom}" src="/img/"${this.imgpath}"></img></div>
+            <div style="grid-area:photo"><img alt="${this.nom} ${this.prenom}" src="${this.imgpath}"></img></div>
             <div style="grid-area:etoiles"><proflib-etoiles score=${this.score}></proflib-etoiles></div>
             </div>`
         var cloneDuTemplate = monTemplate.content.cloneNode(true);

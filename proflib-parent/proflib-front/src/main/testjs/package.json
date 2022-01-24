@@ -15,7 +15,8 @@
     "setupFiles": [
       "@ungap/custom-elements"
     ],
-    "testEnvironment": "jsdom"
+    "testEnvironment": "jsdom",
+    "verbose": true
   },
   "scripts": {
     "test": "jest"
