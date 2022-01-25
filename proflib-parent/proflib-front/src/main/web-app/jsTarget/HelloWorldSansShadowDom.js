@@ -2,7 +2,7 @@ export class HelloWorldSansShadowDom extends HTMLElement{
 constructor(){
         super();
            var monTemplate =document.createElement("template");
-           monTemplate.innerHTML=`<span>HelloWorld</span>`
+           monTemplate.innerHTML=`<span>HelloWorld sans ShadowDom</span>`
            var cloneDuTemplate = monTemplate.content.cloneNode(true);
            this.appendChild(cloneDuTemplate);
     }

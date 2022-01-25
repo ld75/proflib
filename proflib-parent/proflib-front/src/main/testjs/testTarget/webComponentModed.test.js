@@ -8,12 +8,6 @@ beforeAll(async () => {
 beforeEach(async () => {
               document.body.innerHTML="";
      });
-    describe('test jest', () => {
-        it('nom du test', () => {
-            console.log("TEST hello world")
-        })
-    })
-
 describe('instancier un web component et le mettre dans le DOM', () => {
     it('Sans shadowdom', () => {
         let helloWorldSansShadowDom = new HelloWorldSansShadowDom();
@@ -21,6 +15,7 @@ describe('instancier un web component et le mettre dans le DOM', () => {
         expect(document.querySelector("proflib-helloworldnoshadowdom")).toBeTruthy();
         expect (helloWorldSansShadowDom.shadowRoot).toBeFalsy();
         console.log("bodyInnerHTML sans shadow dom",document.body.innerHTML);
+        console.log("querySelector dans le webcomponent sans shadowdom: ",document.body.querySelector("span"));
     })
     it('Avec shadowdom Open', () => {
         let helloWorldAvecShadowDomOpen = new HelloWorldAvecShadowDomOpen();
@@ -28,6 +23,8 @@ describe('instancier un web component et le mettre dans le DOM', () => {
         expect(document.querySelector("proflib-helloworldopen")).toBeTruthy();
         expect (helloWorldAvecShadowDomOpen.shadowRoot).toBeTruthy();
         console.log("bodyInnerHTML avec shadow dom open",document.body.innerHTML);
+        console.log("querySelector dans le webcomponent open: ",document.body.querySelector("span"));
+        helloWorldAvecShadowDomOpen.testshadowdom();
     })
     it('Avec shadowdom Close', () => {
         let helloWorldAvecShadowDomClosed = new HelloWorldAvecShadowDomClosed();
@@ -35,5 +32,7 @@ describe('instancier un web component et le mettre dans le DOM', () => {
         expect(document.querySelector("proflib-helloworldclosed")).toBeTruthy();
         expect (helloWorldAvecShadowDomClosed.shadowRoot).toBeFalsy();
         console.log("bodyInnerHTML avec shadow dom closed",document.body.innerHTML);
+        console.log("querySelector dans le webcomponent closed: ",document.body.querySelector("span"));
+        expect(()=>helloWorldAvecShadowDomClosed.testshadowdom()).toThrow(TypeError);
     })
 })
