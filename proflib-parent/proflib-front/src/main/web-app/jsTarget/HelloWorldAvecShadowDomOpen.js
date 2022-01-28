@@ -9,8 +9,7 @@ constructor(){
     }
     testshadowdom()
     {
-        console.log("Mon dom est-il accessible ?");
-        console.log("je suis accessible",this.shadowRoot.querySelector("span"))
+        console.log("Mon dom est-il accessible de l'interieur ?",this.shadowRoot.querySelector("span"))
     }
 }
 window.customElements.define('proflib-helloworldopen', HelloWorldAvecShadowDomOpen);

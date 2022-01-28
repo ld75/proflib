@@ -73,20 +73,22 @@ public class Eleve {
         return this.nom.nom + " " +this.prenom.prenom;
     }
     @Transactional
-    public void creerCompte(CompteCreationDTO compteCreationDTO) throws Exception {
+    public void creerCompteEtEnvoiMailConfirmation(CompteCreationDTO compteCreationDTO) throws Exception {
         logger.debug(compteCreationDTO.toString());
         Eleve eleve = new Eleve(compteCreationDTO.getNom(),compteCreationDTO.getPrenom());
         eleve.setEmail(compteCreationDTO.getEmail());
         eleveRepository.createEleve(eleve);
+        envoiMailConfirmationCreationCompte(compteCreationDTO);
+
+    }
+    private void envoiMailConfirmationCreationCompte(CompteCreationDTO compteCreationDTO) throws Exception {
         String corpMailTemplate = "Bonjour %s !"+
                     "Merci de vous être inscrit sur Proflib. Votre email est bien %s."+
                     "Si vous avez reçu ce mail par erreur vous pouvez l'ignorer. "+
                     "Pour confirmer votre inscription cliquez ici %s";
         String corpmail  = String.format(corpMailTemplate,compteCreationDTO.getPrenom(), compteCreationDTO.getEmail(),"urlAFAIRE");
-        sendMailInscriptionConfirme(compteCreationDTO.getEmail(),"ProfLib - confirmez votre inscription" , corpmail);
-    }
-    public void sendMailInscriptionConfirme(String email,String sujet, String corpMail) throws Exception {
         MailSender mailSender = new MailSender();
-        mailSender.sendTextEmail(Arrays.asList(email),sujet,corpMail);
+        mailSender.sendTextEmail(Arrays.asList(compteCreationDTO.getEmail()),"ProfLib - confirmez votre inscription",corpmail);
     }
+
 }

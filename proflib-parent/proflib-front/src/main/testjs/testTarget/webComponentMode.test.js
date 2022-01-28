@@ -1,4 +1,4 @@
-//import '@ungap/custom-elements';
+import '@ungap/custom-elements';
 import {HelloWorldSansShadowDom} from '../../web-app/js/HelloWorldSansShadowDom.js'
 import {HelloWorldAvecShadowDomOpen} from '../../web-app/js/HelloWorldAvecShadowDomOpen.js'
 import {HelloWorldAvecShadowDomClosed} from '../../web-app/js/HelloWorldAvecShadowDomClosed.js'
@@ -9,7 +9,7 @@ beforeEach(async () => {
               document.body.innerHTML="";
      });
 describe('instancier un web component et le mettre dans le DOM', () => {
-    it('Sans shadowdom', () => {
+    it.skip('Sans shadowdom', () => {
         let helloWorldSansShadowDom = new HelloWorldSansShadowDom();
         document.body.appendChild(helloWorldSansShadowDom);
         expect(document.querySelector("proflib-helloworldnoshadowdom")).toBeTruthy();
@@ -17,14 +17,15 @@ describe('instancier un web component et le mettre dans le DOM', () => {
         console.log("bodyInnerHTML sans shadow dom",document.body.innerHTML);
         console.log("querySelector dans le webcomponent sans shadowdom: ",document.body.querySelector("span"));
     })
-    it('Avec shadowdom Open', () => {
+    it.skip('Avec shadowdom Open', () => {
         let helloWorldAvecShadowDomOpen = new HelloWorldAvecShadowDomOpen();
         document.body.appendChild(helloWorldAvecShadowDomOpen);
         expect(document.querySelector("proflib-helloworldopen")).toBeTruthy();
         expect (helloWorldAvecShadowDomOpen.shadowRoot).toBeTruthy();
         console.log("bodyInnerHTML avec shadow dom open",document.body.innerHTML);
-        console.log("querySelector dans le webcomponent open: ",document.body.querySelector("span"));
+        console.log("querySelector du span depuis l'exterieur (webcomponent open): ",document.body.querySelector("span"));
         helloWorldAvecShadowDomOpen.testshadowdom();
+        console.log("shadowRoot est il accessible depuis l'exterieur ? (webcomponent open): ",helloWorldAvecShadowDomOpen.shadowRoot);
     })
     it('Avec shadowdom Close', () => {
         let helloWorldAvecShadowDomClosed = new HelloWorldAvecShadowDomClosed();
@@ -32,7 +33,8 @@ describe('instancier un web component et le mettre dans le DOM', () => {
         expect(document.querySelector("proflib-helloworldclosed")).toBeTruthy();
         expect (helloWorldAvecShadowDomClosed.shadowRoot).toBeFalsy();
         console.log("bodyInnerHTML avec shadow dom closed",document.body.innerHTML);
-        console.log("querySelector dans le webcomponent closed: ",document.body.querySelector("span"));
+        console.log("querySelector du span depuis l'exterieur (webcomponent closed): ",document.body.querySelector("span"));
         expect(()=>helloWorldAvecShadowDomClosed.testshadowdom()).toThrow(TypeError);
+        console.log("shadowRoot est il accessible depuis l'exterieur ? (webcomponent closed): ",helloWorldAvecShadowDomClosed.shadowRoot);
     })
 })

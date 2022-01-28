@@ -6,22 +6,28 @@ import org.junit.jupiter.api.Test;
 class CleanMeTest {
 
     @Test
-    public void vide_longestZSero(){
+    public void vide_longestZero_stringVide(){
 
-        String res = CleanMeMoiApres.longestZSero("");
+        String res = CleanMe.longestZero("");
         System.out.println(res);
         Assertions.assertEquals("",res);
     }
     @Test
-    public void espaces_longestZSero(){
+    public void espaces_longestZero_stringVide(){
 
-        String res = CleanMeMoiApres.longestZSero("     ");
+        String res = CleanMe.longestZero("     ");
         Assertions.assertEquals("",res);
     }
     @Test
-    public void chiffres_longestZSero(){
+    public void chiffresordonnes_longestZero_unZero(){
 
-        String res = CleanMeMoiApres.longestZSero("0  000 120030450670890");
-        Assertions.assertEquals("000",res);
+        String res = CleanMe.longestZero("0123456789");
+        Assertions.assertEquals("0",res);
+    }
+    @Test
+    public void zerisConsecutifs_longestZero_leMaxDeZeroConsecutifs(){
+
+        String res = CleanMe.longestZero("000123000045670089");
+        Assertions.assertEquals("0000",res);
     }
 }

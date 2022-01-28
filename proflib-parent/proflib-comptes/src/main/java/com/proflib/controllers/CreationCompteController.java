@@ -35,7 +35,7 @@ public class CreationCompteController {
     public void enregistreEtEnvoiMailConfirmation(CompteCreationDTO compteCreationDTO) {
         logger.debug(compteCreationDTO.toString());
         try {
-            eleve.creerCompte(compteCreationDTO);
+            eleve.creerCompteEtEnvoiMailConfirmation(compteCreationDTO);
         } catch (Exception e) {
             logger.error("err",e);
         }
@@ -48,3 +48,4 @@ public class CreationCompteController {
     }
 
 }
+
