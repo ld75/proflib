@@ -27,7 +27,7 @@ describe('instancier un web component et le mettre dans le DOM', () => {
         helloWorldAvecShadowDomOpen.testshadowdom();
         console.log("shadowRoot est il accessible depuis l'exterieur ? (webcomponent open): ",helloWorldAvecShadowDomOpen.shadowRoot);
     })
-    it('Avec shadowdom Close', () => {
+    it.skip('Avec shadowdom Close', () => {
         let helloWorldAvecShadowDomClosed = new HelloWorldAvecShadowDomClosed();
         document.body.appendChild(helloWorldAvecShadowDomClosed);
         expect(document.querySelector("proflib-helloworldclosed")).toBeTruthy();
