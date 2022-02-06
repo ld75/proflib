@@ -1,4 +1,7 @@
 import {DureeDeplacementRDV} from '../../web-app/js/DureeDeplacementRDV.js'
+import {Vehicule} from '../../web-app/js/Vehicule.js'
+import {VehiculeFactory} from '../../web-app/js/VehiculeFactory.js'
+
 beforeAll(async () => {
 });
 
@@ -10,6 +13,11 @@ let dureeDeplacementRDV = new DureeDeplacementRDV();
     it('vitesseZeroDistanceZero_calculDureeDeplacement_exceptionInfini', () => {
           expect(() => dureeDeplacementRDV.calculDureeDeplacement(0, 0)).toThrowError('infini');
 })
+
+    it('vitesseUnDistanceZero_calculDureeDeplacement_zerominutes', () => {
+          let minutes = dureeDeplacementRDV.calculDureeDeplacement(1, 0);
+          expect(minutes).toEqual(0)
+})
     it('vitesseUnDistanceUn_calculDureeDeplacement_soixanteminutes', () => {
         let minutes = dureeDeplacementRDV.calculDureeDeplacement(1,1);
         expect(minutes).toEqual(60)
@@ -18,4 +26,9 @@ let dureeDeplacementRDV = new DureeDeplacementRDV();
         let minutes = dureeDeplacementRDV.calculDureeDeplacement(2,1);
         expect(minutes).toEqual(30)
 })
+//----------------------------------
+
+
+
+
 })

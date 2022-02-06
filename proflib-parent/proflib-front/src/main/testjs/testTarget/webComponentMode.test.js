@@ -35,6 +35,6 @@ describe('instancier un web component et le mettre dans le DOM', () => {
         console.log("bodyInnerHTML avec shadow dom closed",document.body.innerHTML);
         console.log("querySelector du span depuis l'exterieur (webcomponent closed): ",document.body.querySelector("span"));
         expect(()=>helloWorldAvecShadowDomClosed.testshadowdom()).toThrow(TypeError);
-        console.log("shadowRoot est il accessible depuis l'exterieur ? (webcomponent closed): ",helloWorldAvecShadowDomClosed.shadowRoot);
+        console.log("shadowRooet est il accessible depuis l'exterieur ? (webcomponent closed): ",helloWorldAvecShadowDomClosed.shadowRoot);
     })
 })
