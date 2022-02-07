@@ -8,7 +8,7 @@ buildTrain(vitessesDeSegment, pauseEntreGares,dureeDebutVoyage,findureevoyage){
     vehicule.ajouteComportementEnVille(function(){ return pauseEntreGares})
     vehicule.setPositionEnMinute(dureeDebutVoyage);
     vehicule.setPositionFinEnMinute(findureevoyage);
-    vehicule.lapskmville=7
+    vehicule.lapskmville=3
     return vehicule;
 }
 }
