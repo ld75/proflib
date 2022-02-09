@@ -7,7 +7,7 @@ convertminutesToHeures(minutes)
     let heures = Math.floor(minutes/60)
     let minutesRestantes=minutes%60
      if (minutesRestantes<10) minutesRestantes="0"+minutesRestantes
-    return "0"+heures+":"+minutesRestantes
+    return heures+":"+minutesRestantes
 
 }
 

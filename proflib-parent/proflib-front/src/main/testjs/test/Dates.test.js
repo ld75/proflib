@@ -17,21 +17,21 @@ expect(dates.convertminutesToHeures(50)).toEqual("00:50")
 })
 it("60min_convertminutesToHeures",()=>{
 let dates = new Dates();
-expect(dates.convertminutesToHeures(60)).toEqual("01:00")
+expect(dates.convertminutesToHeures(60)).toEqual("1:00")
 })
 it("61min_convertminutesToHeures",()=>{
 let dates = new Dates();
-expect(dates.convertminutesToHeures(61)).toEqual("01:01")
+expect(dates.convertminutesToHeures(61)).toEqual("1:01")
 })
 it("80min_convertminutesToHeures",()=>{
 let dates = new Dates();
-expect(dates.convertminutesToHeures(80)).toEqual("01:20")
+expect(dates.convertminutesToHeures(80)).toEqual("1:20")
 })
 it("120min_convertminutesToHeures",()=>{
 let dates = new Dates();
-expect(dates.convertminutesToHeures(120)).toEqual("02:00")
+expect(dates.convertminutesToHeures(120)).toEqual("2:00")
 })
 it("132min_convertminutesToHeures",()=>{
 let dates = new Dates();
-expect(dates.convertminutesToHeures(132)).toEqual("02:12")
+expect(dates.convertminutesToHeures(132)).toEqual("2:12")
 })
