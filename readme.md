@@ -1,6 +1,6 @@
 # Demo Bonnes pratiques de dev TDD
 support PPT:<br>
-/les bonnes pratiques pour développer.pptx
+/les bonnes_pratiques_pour_développer.pptx
 <h1>Javascript</h1>
 <b>configuration pour tests unitaires avec Jest avec ES6, Dom,webcomponents</b><br>
 /proflib-parent/proflib-front/src/main/testjs<br>
