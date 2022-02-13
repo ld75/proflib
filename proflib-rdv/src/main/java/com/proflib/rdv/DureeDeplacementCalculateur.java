@@ -1,6 +1,6 @@
 package com.proflib.rdv;
 
-import com.proflib.rdv.vehicule.Train;
+import com.proflib.transport.Train;
 import org.springframework.stereotype.Component;
 
 @Component
