@@ -14,9 +14,6 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
     <modules>
-        <module>proflib-comptes</module>
-        <module>service-b</module>
-        <module>proflib-sharedkernels</module>
         <module>proflib-front</module>
     </modules>
 

@@ -1,11 +1,16 @@
-# MicroProfile generated Applications
-
-MicroProfile Starter has generated 2 MicroProfile applications for you.
-
-There are 2 projects generated so that the examples for the Rest Client and/or JWT Auth specification are more realistic in the sense that they actually call an endpoint within another service.
-
-. In the `service-a` directory, you can find an application with the major parts of the application. This can be seen as the 'client'.
-. In the `service-b` directory, you can find some endpoints which will be called by code within the client application. This can be seen as the 'backend'.
-
-Have a look in the `readme.md` file in each directory which describes how each project can be built and run.
-
+# Demo Bonnes pratiques de dev TDD
+<h1>Javascript</h1>
+<b>configuration pour tests unitaires avec Jest avec ES6, Dom,webcomponents</b><br>
+/proflib-parent/proflib-front/src/main/testjs<br>
+<b>tests unitaires avec jest</b><br>
+/proflib-parent/proflib-front/src/main/testjs/test<br>
+<b>tests unitaires visuels de web-components</b><br>
+/proflib-parent/proflib-front/src/main/testjs/test/testsVisuels
+<h1>Java</h1>
+<b>Refactoring d'un code -> CleanCode</b><br>
+/proflib-parent/proflib-rdv/src/test/java/com/proflib/cleancode/CleanMeTest.java<br>
+/proflib-parent/proflib-rdv/src/main/java/com/proflib/cleancode<br>
+<b>tests unitaires calcul durée de déplacement</b><br>
+/proflib-parent/proflib-rdv/src/test/java/com/proflib/rdv/DureeDeplacementRDVTest.java<br>
+<b>Pomodoro</b><br>
+/proflib-parent/proflib-rdv/src/test/java/com/proflib/rdv/pomodoro/PomodoroTest.java
