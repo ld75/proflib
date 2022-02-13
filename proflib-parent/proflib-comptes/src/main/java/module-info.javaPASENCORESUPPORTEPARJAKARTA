@@ -1,9 +1,0 @@
-module proflib.comptes {
-    requires proflib.sharedkernels;
-    requires slf4j.api;
-    requires jakarta.jakartaee.web.api;
-    requires microprofile.fault.tolerance.api;
-    requires jakarta.inject.api;
-    requires jakarta.enterprise.cdi.api;
- //   requires java.annotation;
-}

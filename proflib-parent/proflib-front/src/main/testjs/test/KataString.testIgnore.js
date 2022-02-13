@@ -1,3 +1,4 @@
+// exercice de TDD issu de https://osherove.com/tdd-kata-1
 beforeAll(()=>{
 })
 it("test1",()=>{

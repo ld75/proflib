@@ -1,10 +1,12 @@
 package com.proflib.rdv;
 
+import com.proflib.rdv.datasource.DatasourceMockConfig;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.testDureeDeplacementRDVTest.context.ContextConfiguration;
+import org.springframework.test.context.ContextConfiguration;
+
 
 @SpringBootTest
 @ContextConfiguration(classes={DatasourceMockConfig.class,DureeDeplacementRDV.class})
