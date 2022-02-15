@@ -1,4 +1,4 @@
-package com.proflib.rdv.pomodoro;
+package com.proflib.pomodoro;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
