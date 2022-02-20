@@ -8,10 +8,10 @@ return distanceKm*60/vitesseKmh;
 creersegments(departArrivee,listeDistances){
 let res=new Array()
 let depart; let arrivee="initial";
- while (arrivee!=departArrivee[1]){
+ while (arrivee!=departArrivee.split(" ")[1]){
    depart = this.findDepart(departArrivee,arrivee)
    arrivee=this.findNextArrivee(departArrivee,depart,listeDistances)
-   res.push(parseInt(this.findDepartArriveeInListDistances(depart,arrivee,listeDistances)[2]))
+   res.push(parseFloat(this.findDepartArriveeInListDistances(depart,arrivee,listeDistances)[2]))
  }
  return res;
 }
@@ -31,28 +31,28 @@ findDepart(departArrivee,arriveeprecedpente){
 findNextArrivee(departArrivee,depart,listeDistances)
 {
     let arrivee=departArrivee.split(" ")[1]
+    let previousDistance;
+    let nbreset=0
+    let memoirearrivee;
+    let previousarrivees=Array();
+    let culdesac = Array()
     for (let i=0; i<listeDistances.length; i++)
     {
-        console.log ("III "+ i +" " + listeDistances.length+" " +listeDistances)
         let distance = listeDistances[i].split(" ")
-        console.log("1 distance:"+distance+" - arrivee: "+arrivee)
         if (distance[1]==arrivee){
-            console.log("2 arrivee: "+arrivee+" / distance0: "+distance[0]+" - depart: "+depart )
             if (distance[0]==depart)
             {
-                 console.log("3 depart: "+depart)
                  return distance[1];
             }
-            console.log("4 distance0: "+distance[0])
+            previousarrivees.push(arrivee)
             arrivee=distance[0]
          }
-          console.log("ONRECOMMENCE ? ")
-             console.log(" i:  "+i)
-                console.log("listedistancelengt-1: "+(listeDistances.length-1))
-                console.log("listedistancelengt: "+listeDistances.length)
          if (i==listeDistances.length-1){
-          console.log("Retour a -1")
-          i=-1
+             i=-1
+             nbreset++
+             if (arrivee==memoirearrivee && nbreset>1) {
+                nbreset=0;
+             }
          }
     }
 }

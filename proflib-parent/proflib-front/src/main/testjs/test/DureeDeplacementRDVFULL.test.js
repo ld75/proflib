@@ -137,58 +137,57 @@ it.skip('2findNextArrivee', () => {
         expect(res).toEqual("b")
 })
 
-it('3findNextArrivee', () => {
-        let departArrivee="b f"
-        let listeDistances=["a b 3","b c 6","e f 1","b h 1","a d 5","c d 5","d e 1"]
-        let depart="b"
-        let res = dureeDeplacementRDV.findNextArrivee(departArrivee,depart,listeDistances)
-        expect(res).toEqual("c")
-})
-
-it.skip('DepartArrivee,ListeTrajet1_creerSegments_1trajet', () => {
+it('DepartArrivee,ListeTrajet1_creerSegments_1trajet', () => {
         let depart_arrive="a b"
         let listeDistances=["a b 3"]
         let res = dureeDeplacementRDV.creersegments(depart_arrive,listeDistances)
         expect(res).toEqual([3])
 })
-it.skip('DepartArrivee,ListeTrajet2DontUnNon_creerSegments_1trajet', () => {
+it('DepartArrivee,ListeTrajet2DontUnNon_creerSegments_1trajet', () => {
         let depart_arrive="a b"
         let listeDistances=["a b 5","a c 3"]
         let res = dureeDeplacementRDV.creersegments(depart_arrive,listeDistances)
         expect(res).toEqual([5])
 })
-it.skip('3EtIntrus_creerSegments_3trajets', () => {
+it('3EtIntrus_creerSegments_3trajets', () => {
         let depart_arrive="a c"
         let listeDistances=["e f 10","a g 9","a b 5","b c 3","c d 8"]
         let res = dureeDeplacementRDV.creersegments(depart_arrive,listeDistances)
         expect(res).toEqual([5,3])
 })
 
-it.skip('DepartArrivee,ListeTrajet2_creerSegments_2trajets', () => {
+it('DepartArrivee,ListeTrajet2_creerSegments_2trajets', () => {
         let depart_arrive="a c"
         let listeDistances=["a b 5","b c 3"]
         let res = dureeDeplacementRDV.creersegments(depart_arrive,listeDistances)
         expect(res).toEqual([5,3])
 })
-it.skip('3_creerSegments_3trajets', () => {
+it('3_creerSegments_3trajets', () => {
         let depart_arrive="a d"
         let listeDistances=["a b 5","b c 3","c d 8"]
         let res = dureeDeplacementRDV.creersegments(depart_arrive,listeDistances)
         expect(res).toEqual([5,3,8])
 })
-it.skip('3desordre_creerSegments_3trajets', () => {
+it('3desordre_creerSegments_3trajets', () => {
         let depart_arrive="a d"
         let listeDistances=["a b 5","c d 8","b c 3"]
         let res = dureeDeplacementRDV.creersegments(depart_arrive,listeDistances)
         expect(res).toEqual([5,3,8])
 })
 
-it.skip('vraiesData_creerSegments_prévu', () => {
+it('vraiesData_creerSegments_prévu', () => {
         let depart_arrive="Orleans Nantes"
         let listeDistances=["Orleans Blois 60","Tours Varennes-sur-mer 64.2","Varennes-sur-mer Saumur 11.2","Jarnac Cognac 6","Clisson Nantes 33.7","Cholet Clisson 35.9","Blois Tours 65","Angers Cholet 65","Saumur Angers 66"]
         let res = dureeDeplacementRDV.creersegments(depart_arrive,listeDistances)
         expect(res).toEqual([60,65,64.2,11.2,66,65,35.9,33.7])
 })
+    it('3findNextArrivee_AREUSSIR!!!!', () => {
+        let departArrivee="b f"
+        let listeDistances=["a b 3","b c 6","e f 1","b h 1","a A_REMPLACER_PAR_d_POUR_FAIRE_UN_CUL_DE_SAC 5","c d 5","d e 1"]
+        let depart="b"
+        let res = dureeDeplacementRDV.findNextArrivee(departArrivee,depart,listeDistances)
+        expect(res).toEqual("c")
+    })
 
 
 })
